@@ -1,0 +1,210 @@
+<body>
+    <div class = "main">
+        <H1>TO DO LIST</H1>
+        <div class = "container">
+            <input id="main">
+            <button id="new" onclick="add()">ADD</button>
+            <ul id="list">
+                <li><b>HELLO</b>
+                    <button onclick="deleteitem(event)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<style>
+   body 
+{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main
+{
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.main:hover
+{
+    transform: translateY(-3px);
+}
+
+h1
+{
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.container
+{
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: inset 0px 1px 4px rgba(0,0,0,0.05);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#main
+{
+    width: 65%;
+    padding: 12px;
+    border: 1.5px solid #cfd8e3;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    background: white;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+#main:focus
+{
+    border-color: #7aa7d9;
+    box-shadow: 0px 0px 8px rgba(122,167,217,0.25);
+}
+
+button
+{
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #7aa7d9;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 8px;
+}
+
+button:hover
+{
+    background: #5f92ca;
+    transform: scale(1.04);
+}
+
+ul
+{
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+li
+{
+    background: white;
+    margin-bottom: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #34495e;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    word-break: break-word;
+}
+
+li:hover
+{
+    transform: translateX(4px);
+    background: #f5f9fc;
+}
+
+li button
+{
+    background: #e57373;
+    padding: 8px 14px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+li button:hover
+{
+    background: #d95c5c;
+}
+
+/* Mobile Responsive */
+
+@media screen and (max-width: 600px)
+{
+    .main
+    {
+        padding: 20px;
+    }
+
+    .container
+    {
+        padding: 18px;
+    }
+
+    h1
+    {
+        font-size: 1.6rem;
+    }
+
+    #main
+    {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    #new
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    li
+    {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    li button
+    {
+        width: 100%;
+    }
+}
+</style>
+<script>
+    var a = document.getElementById("list")
+    function add()
+    {
+        var newitem=document.getElementById("main")
+        var listitem = document.createElement("li")
+        listitem.innerHTML = newitem.value + "<button onclick='deleteitem(event)' >Delete</button>"
+        a.append(listitem)
+        newitem.value=""
+    }
+    function deleteitem(event)
+    {
+            var li = event.target.parentElement
+            li.style.textDecoration="line-through"
+            setTimeout(function() {
+                li.remove()
+            }, 500)
+    }
+</script>
