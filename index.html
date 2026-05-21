@@ -1,18 +1,9 @@
-<body>
-    <div class = "main">
-        <H1>TO DO LIST</H1>
-        <div class = "container">
-            <input id="main">
-            <button id="new" onclick="add()">ADD</button>
-            <ul id="list">
-                <li><b>HELLO</b>
-                    <button onclick="deleteitem(event)">Delete</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</body>
-<style>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TO DO LIST</title>
+
+    <style>
    body 
 {
     margin: 0;
@@ -146,8 +137,6 @@ li button:hover
     background: #d95c5c;
 }
 
-/* Mobile Responsive */
-
 @media screen and (max-width: 600px)
 {
     .main
@@ -189,22 +178,55 @@ li button:hover
     }
 }
 </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>TO DO LIST</h1>
+
+        <div class="container">
+            <input id="main" placeholder="Enter task">
+
+            <button id="new" onclick="add()">ADD</button>
+
+            <ul id="list">
+                <li>
+                    <b>HELLO</b>
+                    <button onclick="deleteitem(event)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 <script>
     var a = document.getElementById("list")
+
     function add()
     {
-        var newitem=document.getElementById("main")
+        var newitem = document.getElementById("main")
+
         var listitem = document.createElement("li")
-        listitem.innerHTML = newitem.value + "<button onclick='deleteitem(event)' >Delete</button>"
+
+        listitem.innerHTML =
+            newitem.value +
+            "<button onclick='deleteitem(event)'>Delete</button>"
+
         a.append(listitem)
-        newitem.value=""
+
+        newitem.value = ""
     }
+
     function deleteitem(event)
     {
-            var li = event.target.parentElement
-            li.style.textDecoration="line-through"
-            setTimeout(function() {
-                li.remove()
-            }, 500)
+        var li = event.target.parentElement
+
+        li.style.textDecoration = "line-through"
+
+        setTimeout(function()
+        {
+            li.remove()
+        }, 500)
     }
 </script>
+</body>
+</html>
